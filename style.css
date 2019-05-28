@@ -5,8 +5,8 @@ table{
 }
 td, th{
 
-    width: 300px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     text-align: center;
     border: 1px solid black;
     empty-cells: show;
@@ -15,4 +15,9 @@ td, th{
 #reinicia{
     margin-left: 48.43%;
     margin-top: 2%;
+}
+
+.branco, .x, .circulo{
+    width: 100px;
+    height: 100px;
 }
