@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo Da Velha</title>
+</head>
+<body>
+<script src="out/production/TesteLPF/lib/kotlin.js"></script>
+
+<CENTER><h1>PRIMEIRA PAGINA HTML</h1></CENTER>
+
+<button id="teste" onclick="TesteLPF.mostra()">oi</button>
+<p>
+
+<div id="oi">
+
+</div>
+
+<table border="1">
+    <tr>
+        <td onclick="TesteLPF.jogada('11')"><canvas id="11" width="100" height="100"></canvas></td>
+        <td onclick="TesteLPF.jogada('12')"><canvas id="12" width="100" height="100"></canvas></td>
+        <td onclick="TesteLPF.jogada('13')"><canvas id="13" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+        <td onclick="TesteLPF.jogada('21')"><canvas id="21" width="100" height="100"></canvas></td>
+        <td onclick="TesteLPF.jogada('22')"><canvas id="22" width="100" height="100"></canvas></td>
+        <td onclick="TesteLPF.jogada('23')"><canvas id="23" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+        <td onclick="TesteLPF.jogada('31')"><canvas id="31" width="100" height="100"></canvas></td>
+        <td onclick="TesteLPF.jogada('32')"><canvas id="32" width="100" height="100"></canvas></td>
+        <td onclick="TesteLPF.jogada('33')"><canvas id="33" width="100" height="100"></canvas></td>
+    </tr>
+</table>
+
+<div id="jogadas">
+    Nº Jogadas = <i id="numJogadas">0</i>
+</div>
+
+<div id="imagem">
+    <img id="x" src="img/x.jpg" width="100" height="100">
+    <img id="circulo" src="img/circulo.jpg" width="100" height="100">
+</div>
+
+<script src="out/production/TesteLPF/TesteLPF.js"></script>
+
+</body>
+</html>
