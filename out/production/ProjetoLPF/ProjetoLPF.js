@@ -15,6 +15,9 @@ var ProjetoLPF = function (_, Kotlin) {
   function attRodada(rod, valor) {
     rod.innerHTML = (valor + 1 | 0).toString();
   }
+  function rodadaValor() {
+    return toInt(ensureNotNull(rodadaElemento().textContent));
+  }
   function img() {
     return toInt(ensureNotNull(rodadaElemento().textContent)) % 2 === 0 ? '<img class="x" src="img/x.jpg"/>' : '<img class="circulo" src="img/circulo.jpg"/>';
   }
@@ -211,31 +214,31 @@ var ProjetoLPF = function (_, Kotlin) {
     }
     (tmp$ = document.getElementById('rod')) != null ? (tmp$.innerHTML = (0).toString()) : null;
   }
-  function fim(c) {
-    window.alert('Terminou, venceu o jogador ' + c + ' ');
+  function fim() {
+    if (vitoria())
+      if (rodadaValor() % 2 === 0)
+        window.alert('Jogador X venceu!');
+      else
+        window.alert('Jogador O venceu!');
+    else if (tabuleiroCheio())
+      window.alert('Empate!');
     reinicia();
   }
   function update(id) {
     var tmp$, tmp$_0;
     if (!checa()) {
       var e = Kotlin.isType(tmp$ = document.getElementById(id), HTMLTableCellElement) ? tmp$ : throwCCE();
-      var rod = toInt(ensureNotNull(rodadaElemento().textContent));
       if (equals((tmp$_0 = e.firstElementChild) != null ? tmp$_0.className : null, 'branco'))
         e.innerHTML = img();
-      attRodada(rodadaElemento(), rod);
-      if (vitoria())
-        if (rod % 2 === 0)
-          fim('x');
-        else
-          fim('o');
-      else if (tabuleiroCheio())
-        window.alert('Empate!');
+      attRodada(rodadaElemento(), rodadaValor());
+      fim();
     }
   }
   function main() {
   }
   _.rodadaElemento = rodadaElemento;
   _.attRodada_906ova$ = attRodada;
+  _.rodadaValor = rodadaValor;
   _.img = img;
   _.checaLinhas = checaLinhas;
   _.checaColuna = checaColuna;
@@ -244,7 +247,7 @@ var ProjetoLPF = function (_, Kotlin) {
   _.checa = checa;
   _.vitoria = vitoria;
   _.reinicia = reinicia;
-  _.fim_61zpoe$ = fim;
+  _.fim = fim;
   _.update = update;
   _.main = main;
   main();

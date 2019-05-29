@@ -7,6 +7,8 @@ fun attRodada(rod: HTMLElement, valor: Int): Unit{
     rod.innerHTML= (valor+1).toString()
 }
 
+fun rodadaValor() = rodadaElemento().textContent!!.toInt()
+
 fun img() =
         if(rodadaElemento().textContent!!.toInt()%2==0)
             "<img class=\"x\" src=\"img/x.jpg\"/>"
@@ -117,23 +119,24 @@ fun reinicia(): Unit{
     document.getElementById("rod")?.innerHTML = 0.toString()
 }
 
-fun fim(c: String): Unit {
-    window.alert("Terminou, venceu o jogador $c ")
-    reinicia()
+fun fim(): Unit {
+
+    if (vitoria())
+        if (rodadaValor()%2==0) window.alert("Jogador X venceu!") else window.alert("Jogador O venceu!")
+    else if(tabuleiroCheio()) window.alert("Empate!"); reinicia()
+
 }
 
 @JsName("update")
 fun update(id: String){
     if(!checa()) {
         val e = document.getElementById(id) as HTMLTableCellElement
-        val rod: Int = rodadaElemento().textContent!!.toInt()
 
         if (e.firstElementChild?.className.equals("branco")) e.innerHTML = img()
 
-        attRodada(rodadaElemento(), rod)//atualiza o valor da rodada
+        attRodada(rodadaElemento(), rodadaValor())//atualiza o valor da rodada
 
-        if (vitoria()) if (rod % 2 == 0) fim("x") else fim("o")
-        else if(tabuleiroCheio()) window.alert("Empate!")
+        fim()
     }
 
 }

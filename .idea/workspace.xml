@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Velha.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="135" column="55" selection-start-line="135" selection-start-column="55" selection-end-line="135" selection-end-column="55" />
+            <state relative-caret-position="688">
+              <caret line="138" column="13" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
               <folding>
                 <element signature="e#0#81#0" expanded="true" />
                 <element signature="n#!!block;n#attRodada#0" />
@@ -31,7 +31,6 @@
                 <element signature="n#!!block;n#diagonal2Aux#0;n#!!block;n#checaDiagonal#0" />
                 <element signature="n#!!block;n#tabuleiroCheio#0" />
                 <element signature="n#!!block;n#reinicia#0" />
-                <element signature="n#!!block;n#fim#0" />
                 <element signature="n#!!block;n#main#0" />
               </folding>
             </state>
@@ -186,12 +185,12 @@
       <workItem from="1559071172415" duration="4624000" />
       <workItem from="1559076102626" duration="151000" />
       <workItem from="1559079911456" duration="2276000" />
-      <workItem from="1559090832838" duration="2736000" />
+      <workItem from="1559090832838" duration="3274000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10653000" />
+    <option name="totallyTimeSpent" value="11191000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -286,8 +285,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Velha.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="135" column="55" selection-start-line="135" selection-start-column="55" selection-end-line="135" selection-end-column="55" />
+        <state relative-caret-position="688">
+          <caret line="138" column="13" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
           <folding>
             <element signature="e#0#81#0" expanded="true" />
             <element signature="n#!!block;n#attRodada#0" />
@@ -298,7 +297,6 @@
             <element signature="n#!!block;n#diagonal2Aux#0;n#!!block;n#checaDiagonal#0" />
             <element signature="n#!!block;n#tabuleiroCheio#0" />
             <element signature="n#!!block;n#reinicia#0" />
-            <element signature="n#!!block;n#fim#0" />
             <element signature="n#!!block;n#main#0" />
           </folding>
         </state>
