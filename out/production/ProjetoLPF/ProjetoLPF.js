@@ -3,99 +3,34 @@ if (typeof kotlin === 'undefined') {
 }
 var ProjetoLPF = function (_, Kotlin) {
   'use strict';
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var throwCCE = Kotlin.throwCCE;
   var ensureNotNull = Kotlin.ensureNotNull;
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
-  var equals = Kotlin.equals;
-  var equals_0 = Kotlin.kotlin.text.equals_igcy3c$;
+  var equals = Kotlin.kotlin.text.equals_igcy3c$;
   var asList = Kotlin.org.w3c.dom.asList_kt9thq$;
-  function clicaTeste(id) {
-    var tmp$, tmp$_0;
-    println('2');
-    var e = Kotlin.isType(tmp$ = document.getElementById(id), HTMLTableCellElement) ? tmp$ : throwCCE();
-    var rod = Kotlin.isType(tmp$_0 = document.getElementById('rod'), HTMLElement) ? tmp$_0 : throwCCE();
-    var valor = toInt(ensureNotNull(rod.textContent));
-    var img = valor % 2 === 0 ? '<img class="x" src="img/x.jpg"/>' : '<img class="x" src="img/circulo.jpg"/>';
-    if (equals(ensureNotNull(e.firstElementChild).className, 'branco'))
-      e.innerHTML = img;
-    attRodada(rod, valor);
-    println(checaLinhas());
-  }
-  function testeCheca() {
-    var tmp$, tmp$_0;
-    var l = document.getElementsByTagName('td');
-    println('pula');
-    println(equals_0((tmp$_0 = (tmp$ = l[0]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'x'));
-  }
-  function update(id) {
-    var tmp$, tmp$_0;
-    if (!checa()) {
-      var e = Kotlin.isType(tmp$ = document.getElementById(id), HTMLTableCellElement) ? tmp$ : throwCCE();
-      var rod = Kotlin.isType(tmp$_0 = document.getElementById('rod'), HTMLElement) ? tmp$_0 : throwCCE();
-      var valor = toInt(ensureNotNull(rod.textContent));
-      jogada(e.firstElementChild, valor);
-      attRodada(rod, valor);
-      println(checaLinhas());
-      if (checaVitoria())
-        if (valor % 2 === 0)
-          fim('x');
-        else
-          fim('o');
-    }
-     else if (tabuleiroCheio())
-      window.alert('Empate!');
-  }
-  function reinicia() {
+  function rodadaElemento() {
     var tmp$;
-    var e = document.getElementsByTagName('td');
-    var tmp$_0;
-    tmp$_0 = asList(e).iterator();
-    while (tmp$_0.hasNext()) {
-      var element = tmp$_0.next();
-      element.innerHTML = '#';
-    }
-    (tmp$ = document.getElementById('rod')) != null ? (tmp$.innerHTML = (0).toString()) : null;
-  }
-  function fim(c) {
-    window.alert('Terminou, venceu o jogador ' + c + ' ');
-    reinicia();
-  }
-  function jogada(elem, rodada) {
-    if (equals_0(elem != null ? elem.className : null, 'branco'))
-      if (rodada % 2 === 0)
-        elem != null ? (elem.innerHTML = '<img class="x" src="img/x.jpg"/>') : null;
-      else
-        elem != null ? (elem.innerHTML = '<img class="x" src="img/circulo.jpg"/>') : null;
+    return Kotlin.isType(tmp$ = document.getElementById('rod'), HTMLElement) ? tmp$ : throwCCE();
   }
   function attRodada(rod, valor) {
     rod.innerHTML = (valor + 1 | 0).toString();
   }
-  function tabuleiroCheio() {
-    var l = document.getElementsByTagName('td');
-    var tmp$;
-    tmp$ = asList(l).iterator();
-    while (tmp$.hasNext()) {
-      var element = tmp$.next();
-      var tmp$_0;
-      if (equals_0((tmp$_0 = element.firstElementChild) != null ? tmp$_0.className : null, 'branco'))
-        return false;
-    }
-    return true;
+  function img() {
+    return toInt(ensureNotNull(rodadaElemento().textContent)) % 2 === 0 ? '<img class="x" src="img/x.jpg"/>' : '<img class="circulo" src="img/circulo.jpg"/>';
   }
   function checaLinhas$linha1Aux(closure$l) {
     return function () {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
-      var tmp$_13 = !equals_0((tmp$_0 = (tmp$ = closure$l[0]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
+      var tmp$_13 = !equals((tmp$_0 = (tmp$ = closure$l[0]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
       if (!tmp$_13) {
-        tmp$_13 = !equals_0((tmp$_2 = (tmp$_1 = closure$l[1]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
+        tmp$_13 = !equals((tmp$_2 = (tmp$_1 = closure$l[1]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
       }
       var tmp$_14 = tmp$_13;
       if (!tmp$_14) {
-        tmp$_14 = !equals_0((tmp$_4 = (tmp$_3 = closure$l[2]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
+        tmp$_14 = !equals((tmp$_4 = (tmp$_3 = closure$l[2]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
       }
       if (tmp$_14) {
-        return equals_0((tmp$_6 = (tmp$_5 = closure$l[0]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[1]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals_0((tmp$_10 = (tmp$_9 = closure$l[0]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[2]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
+        return equals((tmp$_6 = (tmp$_5 = closure$l[0]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[1]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals((tmp$_10 = (tmp$_9 = closure$l[0]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[2]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
       }
        else
         return false;
@@ -104,16 +39,16 @@ var ProjetoLPF = function (_, Kotlin) {
   function checaLinhas$linha2Aux(closure$l) {
     return function () {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
-      var tmp$_13 = !equals_0((tmp$_0 = (tmp$ = closure$l[3]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
+      var tmp$_13 = !equals((tmp$_0 = (tmp$ = closure$l[3]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
       if (!tmp$_13) {
-        tmp$_13 = !equals_0((tmp$_2 = (tmp$_1 = closure$l[4]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
+        tmp$_13 = !equals((tmp$_2 = (tmp$_1 = closure$l[4]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
       }
       var tmp$_14 = tmp$_13;
       if (!tmp$_14) {
-        tmp$_14 = !equals_0((tmp$_4 = (tmp$_3 = closure$l[5]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
+        tmp$_14 = !equals((tmp$_4 = (tmp$_3 = closure$l[5]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
       }
       if (tmp$_14) {
-        return equals_0((tmp$_6 = (tmp$_5 = closure$l[3]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[4]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals_0((tmp$_10 = (tmp$_9 = closure$l[3]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[5]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
+        return equals((tmp$_6 = (tmp$_5 = closure$l[3]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[4]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals((tmp$_10 = (tmp$_9 = closure$l[3]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[5]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
       }
        else
         return false;
@@ -122,16 +57,16 @@ var ProjetoLPF = function (_, Kotlin) {
   function checaLinhas$linha3Aux(closure$l) {
     return function () {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
-      var tmp$_13 = !equals_0((tmp$_0 = (tmp$ = closure$l[6]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
+      var tmp$_13 = !equals((tmp$_0 = (tmp$ = closure$l[6]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
       if (!tmp$_13) {
-        tmp$_13 = !equals_0((tmp$_2 = (tmp$_1 = closure$l[7]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
+        tmp$_13 = !equals((tmp$_2 = (tmp$_1 = closure$l[7]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
       }
       var tmp$_14 = tmp$_13;
       if (!tmp$_14) {
-        tmp$_14 = !equals_0((tmp$_4 = (tmp$_3 = closure$l[8]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
+        tmp$_14 = !equals((tmp$_4 = (tmp$_3 = closure$l[8]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
       }
       if (tmp$_14) {
-        return equals_0((tmp$_6 = (tmp$_5 = closure$l[6]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[7]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals_0((tmp$_10 = (tmp$_9 = closure$l[6]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[8]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
+        return equals((tmp$_6 = (tmp$_5 = closure$l[6]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[7]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals((tmp$_10 = (tmp$_9 = closure$l[6]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[8]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
       }
        else
         return false;
@@ -146,17 +81,17 @@ var ProjetoLPF = function (_, Kotlin) {
   }
   function checaColuna$coluna1Aux(closure$l) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
-      var tmp$_6 = !equals_0((tmp$ = closure$l[0]) != null ? tmp$.textContent : null, '#');
-      if (!tmp$_6) {
-        tmp$_6 = !equals_0((tmp$_0 = closure$l[3]) != null ? tmp$_0.textContent : null, '#');
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
+      var tmp$_13 = !equals((tmp$_0 = (tmp$ = closure$l[0]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
+      if (!tmp$_13) {
+        tmp$_13 = !equals((tmp$_2 = (tmp$_1 = closure$l[3]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
       }
-      var tmp$_7 = tmp$_6;
-      if (!tmp$_7) {
-        tmp$_7 = !equals_0((tmp$_1 = closure$l[6]) != null ? tmp$_1.textContent : null, '#');
+      var tmp$_14 = tmp$_13;
+      if (!tmp$_14) {
+        tmp$_14 = !equals((tmp$_4 = (tmp$_3 = closure$l[6]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
       }
-      if (tmp$_7) {
-        return equals_0((tmp$_2 = closure$l[0]) != null ? tmp$_2.textContent : null, (tmp$_3 = closure$l[3]) != null ? tmp$_3.textContent : null) ? equals_0((tmp$_4 = closure$l[0]) != null ? tmp$_4.textContent : null, (tmp$_5 = closure$l[6]) != null ? tmp$_5.textContent : null) : false;
+      if (tmp$_14) {
+        return equals((tmp$_6 = (tmp$_5 = closure$l[0]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[3]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals((tmp$_10 = (tmp$_9 = closure$l[0]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[6]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
       }
        else
         return false;
@@ -164,17 +99,17 @@ var ProjetoLPF = function (_, Kotlin) {
   }
   function checaColuna$coluna2Aux(closure$l) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
-      var tmp$_6 = !equals_0((tmp$ = closure$l[1]) != null ? tmp$.textContent : null, '#');
-      if (!tmp$_6) {
-        tmp$_6 = !equals_0((tmp$_0 = closure$l[4]) != null ? tmp$_0.textContent : null, '#');
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
+      var tmp$_13 = !equals((tmp$_0 = (tmp$ = closure$l[1]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
+      if (!tmp$_13) {
+        tmp$_13 = !equals((tmp$_2 = (tmp$_1 = closure$l[4]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
       }
-      var tmp$_7 = tmp$_6;
-      if (!tmp$_7) {
-        tmp$_7 = !equals_0((tmp$_1 = closure$l[7]) != null ? tmp$_1.textContent : null, '#');
+      var tmp$_14 = tmp$_13;
+      if (!tmp$_14) {
+        tmp$_14 = !equals((tmp$_4 = (tmp$_3 = closure$l[7]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
       }
-      if (tmp$_7) {
-        return equals_0((tmp$_2 = closure$l[1]) != null ? tmp$_2.textContent : null, (tmp$_3 = closure$l[4]) != null ? tmp$_3.textContent : null) ? equals_0((tmp$_4 = closure$l[1]) != null ? tmp$_4.textContent : null, (tmp$_5 = closure$l[7]) != null ? tmp$_5.textContent : null) : false;
+      if (tmp$_14) {
+        return equals((tmp$_6 = (tmp$_5 = closure$l[1]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[4]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals((tmp$_10 = (tmp$_9 = closure$l[1]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[7]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
       }
        else
         return false;
@@ -182,17 +117,17 @@ var ProjetoLPF = function (_, Kotlin) {
   }
   function checaColuna$coluna3Aux(closure$l) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
-      var tmp$_6 = !equals_0((tmp$ = closure$l[2]) != null ? tmp$.textContent : null, '#');
-      if (!tmp$_6) {
-        tmp$_6 = !equals_0((tmp$_0 = closure$l[5]) != null ? tmp$_0.textContent : null, '#');
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
+      var tmp$_13 = !equals((tmp$_0 = (tmp$ = closure$l[2]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
+      if (!tmp$_13) {
+        tmp$_13 = !equals((tmp$_2 = (tmp$_1 = closure$l[5]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
       }
-      var tmp$_7 = tmp$_6;
-      if (!tmp$_7) {
-        tmp$_7 = !equals_0((tmp$_1 = closure$l[8]) != null ? tmp$_1.textContent : null, '#');
+      var tmp$_14 = tmp$_13;
+      if (!tmp$_14) {
+        tmp$_14 = !equals((tmp$_4 = (tmp$_3 = closure$l[8]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
       }
-      if (tmp$_7) {
-        return equals_0((tmp$_2 = closure$l[2]) != null ? tmp$_2.textContent : null, (tmp$_3 = closure$l[5]) != null ? tmp$_3.textContent : null) ? equals_0((tmp$_4 = closure$l[2]) != null ? tmp$_4.textContent : null, (tmp$_5 = closure$l[8]) != null ? tmp$_5.textContent : null) : false;
+      if (tmp$_14) {
+        return equals((tmp$_6 = (tmp$_5 = closure$l[2]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[5]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals((tmp$_10 = (tmp$_9 = closure$l[2]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[8]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
       }
        else
         return false;
@@ -207,17 +142,17 @@ var ProjetoLPF = function (_, Kotlin) {
   }
   function checaDiagonal$diagonal1Aux(closure$l) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
-      var tmp$_6 = !equals_0((tmp$ = closure$l[0]) != null ? tmp$.textContent : null, '#');
-      if (!tmp$_6) {
-        tmp$_6 = !equals_0((tmp$_0 = closure$l[4]) != null ? tmp$_0.textContent : null, '#');
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
+      var tmp$_13 = !equals((tmp$_0 = (tmp$ = closure$l[0]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
+      if (!tmp$_13) {
+        tmp$_13 = !equals((tmp$_2 = (tmp$_1 = closure$l[4]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
       }
-      var tmp$_7 = tmp$_6;
-      if (!tmp$_7) {
-        tmp$_7 = !equals_0((tmp$_1 = closure$l[8]) != null ? tmp$_1.textContent : null, '#');
+      var tmp$_14 = tmp$_13;
+      if (!tmp$_14) {
+        tmp$_14 = !equals((tmp$_4 = (tmp$_3 = closure$l[8]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
       }
-      if (tmp$_7) {
-        return equals_0((tmp$_2 = closure$l[0]) != null ? tmp$_2.textContent : null, (tmp$_3 = closure$l[4]) != null ? tmp$_3.textContent : null) ? equals_0((tmp$_4 = closure$l[0]) != null ? tmp$_4.textContent : null, (tmp$_5 = closure$l[8]) != null ? tmp$_5.textContent : null) : false;
+      if (tmp$_14) {
+        return equals((tmp$_6 = (tmp$_5 = closure$l[0]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[4]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals((tmp$_10 = (tmp$_9 = closure$l[0]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[8]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
       }
        else
         return false;
@@ -225,17 +160,17 @@ var ProjetoLPF = function (_, Kotlin) {
   }
   function checaDiagonal$diagonal2Aux(closure$l) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
-      var tmp$_6 = !equals_0((tmp$ = closure$l[6]) != null ? tmp$.textContent : null, '#');
-      if (!tmp$_6) {
-        tmp$_6 = !equals_0((tmp$_0 = closure$l[4]) != null ? tmp$_0.textContent : null, '#');
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
+      var tmp$_13 = !equals((tmp$_0 = (tmp$ = closure$l[6]) != null ? tmp$.firstElementChild : null) != null ? tmp$_0.className : null, 'branco');
+      if (!tmp$_13) {
+        tmp$_13 = !equals((tmp$_2 = (tmp$_1 = closure$l[4]) != null ? tmp$_1.firstElementChild : null) != null ? tmp$_2.className : null, 'branco');
       }
-      var tmp$_7 = tmp$_6;
-      if (!tmp$_7) {
-        tmp$_7 = !equals_0((tmp$_1 = closure$l[2]) != null ? tmp$_1.textContent : null, '#');
+      var tmp$_14 = tmp$_13;
+      if (!tmp$_14) {
+        tmp$_14 = !equals((tmp$_4 = (tmp$_3 = closure$l[2]) != null ? tmp$_3.firstElementChild : null) != null ? tmp$_4.className : null, 'branco');
       }
-      if (tmp$_7) {
-        return equals_0((tmp$_2 = closure$l[6]) != null ? tmp$_2.textContent : null, (tmp$_3 = closure$l[4]) != null ? tmp$_3.textContent : null) ? equals_0((tmp$_4 = closure$l[6]) != null ? tmp$_4.textContent : null, (tmp$_5 = closure$l[2]) != null ? tmp$_5.textContent : null) : false;
+      if (tmp$_14) {
+        return equals((tmp$_6 = (tmp$_5 = closure$l[6]) != null ? tmp$_5.firstElementChild : null) != null ? tmp$_6.className : null, (tmp$_8 = (tmp$_7 = closure$l[4]) != null ? tmp$_7.firstElementChild : null) != null ? tmp$_8.className : null) ? equals((tmp$_10 = (tmp$_9 = closure$l[6]) != null ? tmp$_9.firstElementChild : null) != null ? tmp$_10.className : null, (tmp$_12 = (tmp$_11 = closure$l[2]) != null ? tmp$_11.firstElementChild : null) != null ? tmp$_12.className : null) : false;
       }
        else
         return false;
@@ -247,27 +182,70 @@ var ProjetoLPF = function (_, Kotlin) {
     var diagonal2Aux = checaDiagonal$diagonal2Aux(l);
     return diagonal1Aux() || diagonal2Aux();
   }
-  function checa() {
-    return checaLinhas();
+  function tabuleiroCheio() {
+    var l = document.getElementsByTagName('td');
+    var tmp$;
+    tmp$ = asList(l).iterator();
+    while (tmp$.hasNext()) {
+      var element = tmp$.next();
+      var tmp$_0;
+      if (equals((tmp$_0 = element.firstElementChild) != null ? tmp$_0.className : null, 'branco'))
+        return false;
+    }
+    return true;
   }
-  function checaVitoria() {
+  function checa() {
+    return vitoria() || tabuleiroCheio();
+  }
+  function vitoria() {
     return checaLinhas() || checaColuna() || checaDiagonal();
+  }
+  function reinicia() {
+    var tmp$;
+    var e = document.getElementsByTagName('td');
+    var tmp$_0;
+    tmp$_0 = asList(e).iterator();
+    while (tmp$_0.hasNext()) {
+      var element = tmp$_0.next();
+      element.innerHTML = '<img class="branco"/>';
+    }
+    (tmp$ = document.getElementById('rod')) != null ? (tmp$.innerHTML = (0).toString()) : null;
+  }
+  function fim(c) {
+    window.alert('Terminou, venceu o jogador ' + c + ' ');
+    reinicia();
+  }
+  function update(id) {
+    var tmp$, tmp$_0;
+    if (!checa()) {
+      var e = Kotlin.isType(tmp$ = document.getElementById(id), HTMLTableCellElement) ? tmp$ : throwCCE();
+      var rod = toInt(ensureNotNull(rodadaElemento().textContent));
+      if (equals((tmp$_0 = e.firstElementChild) != null ? tmp$_0.className : null, 'branco'))
+        e.innerHTML = img();
+      attRodada(rodadaElemento(), rod);
+      if (vitoria())
+        if (rod % 2 === 0)
+          fim('x');
+        else
+          fim('o');
+    }
+     else if (tabuleiroCheio())
+      window.alert('Empate!');
   }
   function main() {
   }
-  _.update2 = clicaTeste;
-  _.testeCheca = testeCheca;
-  _.update = update;
-  _.reinicia = reinicia;
-  _.fim_61zpoe$ = fim;
-  _.jogada_gpzq8i$ = jogada;
+  _.rodadaElemento = rodadaElemento;
   _.attRodada_906ova$ = attRodada;
-  _.tabuleiroCheio = tabuleiroCheio;
+  _.img = img;
   _.checaLinhas = checaLinhas;
   _.checaColuna = checaColuna;
   _.checaDiagonal = checaDiagonal;
+  _.tabuleiroCheio = tabuleiroCheio;
   _.checa = checa;
-  _.checaVitoria = checaVitoria;
+  _.vitoria = vitoria;
+  _.reinicia = reinicia;
+  _.fim_61zpoe$ = fim;
+  _.update = update;
   _.main = main;
   main();
   Kotlin.defineModule('ProjetoLPF', _);

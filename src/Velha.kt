@@ -1,69 +1,18 @@
 import org.w3c.dom.*
-import org.w3c.dom.events.MouseEvent
+
 import kotlin.browser.*
 
-@JsName("update2")
-fun clicaTeste(id: String){
-    println("2")
-
-    val e = document.getElementById(id) as HTMLTableCellElement
-    val rod = document.getElementById("rod") as HTMLElement
-    val valor: Int = rod.textContent!!.toInt()
-
-    val img = if(valor%2==0) "<img class=\"x\" src=\"img/x.jpg\"/>" else "<img class=\"x\" src=\"img/circulo.jpg\"/>"
-
-    if(e.firstElementChild!!.className.equals("branco")) e.innerHTML = img
-
-    attRodada(rod, valor)//atualiza o valor da rodada
-
-    println(checaLinhas())
-}
-
-/*@JsName("update")
-fun update(id: String): Unit{
-    if(!checa()) {
-        val e = document.getElementById(id) as HTMLTableCellElement
-        val rod = document.getElementById("rod") as HTMLElement
-        val valor: Int = rod.textContent!!.toInt()
-
-
-        jogada(e.firstElementChild, valor)
-        attRodada(rod, valor)//atualiza o valor da rodada
-
-        println(checaLinhas())
-
-        if(checaVitoria()) if(valor%2==0) fim("x") else fim("o")
-    } else
-       if(tabuleiroCheio()) window.alert("Empate!")
-
-}*/
-
-@JsName("reinicia")
-fun reinicia(): Unit{
-    val e = document.getElementsByTagName("td")
-    e.asList().forEach { obj ->
-        obj.innerHTML = "#"
-    }
-    document.getElementById("rod")?.innerHTML = 0.toString()
-}
-
-fun fim(c: String): Unit {
-    window.alert("Terminou, venceu o jogador $c ")
-    reinicia()
-}
-
+fun rodadaElemento() = document.getElementById("rod") as HTMLElement
 
 fun attRodada(rod: HTMLElement, valor: Int): Unit{
     rod.innerHTML= (valor+1).toString()
 }
 
-fun tabuleiroCheio(): Boolean{
-    val l = document.getElementsByTagName("td")
-    l.asList().forEach { obj ->
-        if(obj.firstElementChild?.className.equals("branco")) return false
-    }
-    return true
-}
+fun img() =
+        if(rodadaElemento().textContent!!.toInt()%2==0)
+            "<img class=\"x\" src=\"img/x.jpg\"/>"
+        else
+            "<img class=\"circulo\" src=\"img/circulo.jpg\"/>"
 
 fun checaLinhas(): Boolean{
     val l = document.getElementsByTagName("td")
@@ -99,22 +48,26 @@ fun checaColuna(): Boolean{
     val l = document.getElementsByTagName("td")
 
     fun coluna1Aux(): Boolean{
-        if(!l.get(0)?.textContent.equals("#") || !l.get(3)?.textContent.equals("#") || !l.get(6)?.textContent.equals("#"))
-            return (l.get(0)?.textContent.equals(l.get(3)?.textContent) && l.get(0)?.textContent.equals(l.get(6)?.textContent))
+        if(!l.get(0)?.firstElementChild?.className.equals("branco") || !l.get(3)?.firstElementChild?.className.equals("branco")
+                || !l.get(6)?.firstElementChild?.className.equals("branco"))
+
+            return (l.get(0)?.firstElementChild?.className.equals(l.get(3)?.firstElementChild?.className) && l.get(0)?.firstElementChild?.className.equals(l.get(6)?.firstElementChild?.className))
         else
             return false
     }
 
     fun coluna2Aux(): Boolean { //checa linha 2
-        if(!l.get(1)?.textContent.equals("#") || !l.get(4)?.textContent.equals("#") || !l.get(7)?.textContent.equals("#"))
-            return (l.get(1)?.textContent.equals(l.get(4)?.textContent) && l.get(1)?.textContent.equals(l.get(7)?.textContent))
+        if(!l.get(1)?.firstElementChild?.className.equals("branco") || !l.get(4)?.firstElementChild?.className.equals("branco")
+                || !l.get(7)?.firstElementChild?.className.equals("branco"))
+
+            return (l.get(1)?.firstElementChild?.className.equals(l.get(4)?.firstElementChild?.className) && l.get(1)?.firstElementChild?.className.equals(l.get(7)?.firstElementChild?.className))
         else
             return false
     }
 
     fun coluna3Aux(): Boolean { //checa linha 2
-        if(!l.get(2)?.textContent.equals("#") || !l.get(5)?.textContent.equals("#") || !l.get(8)?.textContent.equals("#"))
-            return (l.get(2)?.textContent.equals(l.get(5)?.textContent) && l.get(2)?.textContent.equals(l.get(8)?.textContent))
+        if(!l.get(2)?.firstElementChild?.className.equals("branco") || !l.get(5)?.firstElementChild?.className.equals("branco") || !l.get(8)?.firstElementChild?.className.equals("branco"))
+            return (l.get(2)?.firstElementChild?.className.equals(l.get(5)?.firstElementChild?.className) && l.get(2)?.firstElementChild?.className.equals(l.get(8)?.firstElementChild?.className))
         else
             return false
     }
@@ -126,15 +79,17 @@ fun checaDiagonal(): Boolean{
     val l = document.getElementsByTagName("td")
 
     fun diagonal1Aux(): Boolean{
-        if(!l.get(0)?.textContent.equals("#") || !l.get(4)?.textContent.equals("#") || !l.get(8)?.textContent.equals("#"))
-            return (l.get(0)?.textContent.equals(l.get(4)?.textContent) && l.get(0)?.textContent.equals(l.get(8)?.textContent))
+        if(!l.get(0)?.firstElementChild?.className.equals("branco") || !l.get(4)?.firstElementChild?.className.equals("branco")
+                || !l.get(8)?.firstElementChild?.className.equals("branco"))
+            return (l.get(0)?.firstElementChild?.className.equals(l.get(4)?.firstElementChild?.className) && l.get(0)?.firstElementChild?.className.equals(l.get(8)?.firstElementChild?.className))
         else
             return false
     }
 
     fun diagonal2Aux(): Boolean{
-        if(!l.get(6)?.textContent.equals("#") || !l.get(4)?.textContent.equals("#") || !l.get(2)?.textContent.equals("#"))
-            return (l.get(6)?.textContent.equals(l.get(4)?.textContent) && l.get(6)?.textContent.equals(l.get(2)?.textContent))
+        if(!l.get(6)?.firstElementChild?.className.equals("branco") || !l.get(4)?.firstElementChild?.className.equals("branco")
+                || !l.get(2)?.firstElementChild?.className.equals("branco"))
+            return (l.get(6)?.firstElementChild?.className.equals(l.get(4)?.firstElementChild?.className) && l.get(6)?.firstElementChild?.className.equals(l.get(2)?.firstElementChild?.className))
         else
             return false
     }
@@ -142,9 +97,47 @@ fun checaDiagonal(): Boolean{
     return diagonal1Aux() || diagonal2Aux()
 }
 
-fun checa(): Boolean = checaLinhas()
+fun tabuleiroCheio(): Boolean{
+    val l = document.getElementsByTagName("td")
+    l.asList().forEach { obj ->
+        if(obj.firstElementChild?.className.equals("branco")) return false
+    }
+    return true
+}
 
-fun checaVitoria() = checaLinhas() || checaColuna() || checaDiagonal()
+fun checa(): Boolean = vitoria() || tabuleiroCheio()
+
+fun vitoria() = checaLinhas() || checaColuna() || checaDiagonal()
+
+@JsName("reinicia") //prepara o jogo para ser recomecado
+fun reinicia(): Unit{
+    val e = document.getElementsByTagName("td")
+    e.asList().forEach { obj ->
+        obj.innerHTML = "<img class=\"branco\"/>"
+    }
+    document.getElementById("rod")?.innerHTML = 0.toString()
+}
+
+fun fim(c: String): Unit {
+    window.alert("Terminou, venceu o jogador $c ")
+    reinicia()
+}
+
+@JsName("update")
+fun update(id: String){
+    if(!checa()) {
+        val e = document.getElementById(id) as HTMLTableCellElement
+        val rod: Int = rodadaElemento().textContent!!.toInt()
+
+        if (e.firstElementChild?.className.equals("branco")) e.innerHTML = img()
+
+        attRodada(rodadaElemento(), rod)//atualiza o valor da rodada
+
+        if(vitoria()) if(rod%2==0) fim("x") else fim("o")
+    } else
+        if(tabuleiroCheio()) window.alert("Empate!")
+
+}
 
 fun main() {
 
