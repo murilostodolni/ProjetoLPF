@@ -228,9 +228,9 @@ var ProjetoLPF = function (_, Kotlin) {
           fim('x');
         else
           fim('o');
+      else if (tabuleiroCheio())
+        window.alert('Empate!');
     }
-     else if (tabuleiroCheio())
-      window.alert('Empate!');
   }
   function main() {
   }

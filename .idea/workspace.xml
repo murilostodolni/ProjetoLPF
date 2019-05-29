@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c29e05e5-93fa-4078-a5e1-78a8d669fbfb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jogo-velha.html" beforeDir="false" afterPath="$PROJECT_DIR$/jogo-velha.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Velha.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Velha.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,13 +19,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Velha.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+            <state relative-caret-position="697">
+              <caret line="135" column="55" selection-start-line="135" selection-start-column="55" selection-end-line="135" selection-end-column="55" />
               <folding>
                 <element signature="e#0#81#0" expanded="true" />
                 <element signature="n#!!block;n#attRodada#0" />
                 <element signature="n#!!block;n#checaLinhas#0" />
                 <element signature="n#!!block;n#checaColuna#0" />
+                <element signature="n#!!block;n#checaDiagonal#0" />
+                <element signature="n#!!block;n#diagonal1Aux#0;n#!!block;n#checaDiagonal#0" />
+                <element signature="n#!!block;n#diagonal2Aux#0;n#!!block;n#checaDiagonal#0" />
                 <element signature="n#!!block;n#tabuleiroCheio#0" />
                 <element signature="n#!!block;n#reinicia#0" />
                 <element signature="n#!!block;n#fim#0" />
@@ -185,12 +186,12 @@
       <workItem from="1559071172415" duration="4624000" />
       <workItem from="1559076102626" duration="151000" />
       <workItem from="1559079911456" duration="2276000" />
-      <workItem from="1559090832838" duration="2128000" />
+      <workItem from="1559090832838" duration="2736000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10045000" />
+    <option name="totallyTimeSpent" value="10653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -285,13 +286,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Velha.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        <state relative-caret-position="697">
+          <caret line="135" column="55" selection-start-line="135" selection-start-column="55" selection-end-line="135" selection-end-column="55" />
           <folding>
             <element signature="e#0#81#0" expanded="true" />
             <element signature="n#!!block;n#attRodada#0" />
             <element signature="n#!!block;n#checaLinhas#0" />
             <element signature="n#!!block;n#checaColuna#0" />
+            <element signature="n#!!block;n#checaDiagonal#0" />
+            <element signature="n#!!block;n#diagonal1Aux#0;n#!!block;n#checaDiagonal#0" />
+            <element signature="n#!!block;n#diagonal2Aux#0;n#!!block;n#checaDiagonal#0" />
             <element signature="n#!!block;n#tabuleiroCheio#0" />
             <element signature="n#!!block;n#reinicia#0" />
             <element signature="n#!!block;n#fim#0" />

@@ -1,5 +1,4 @@
 import org.w3c.dom.*
-
 import kotlin.browser.*
 
 fun rodadaElemento() = document.getElementById("rod") as HTMLElement
@@ -133,9 +132,9 @@ fun update(id: String){
 
         attRodada(rodadaElemento(), rod)//atualiza o valor da rodada
 
-        if(vitoria()) if(rod%2==0) fim("x") else fim("o")
-    } else
-        if(tabuleiroCheio()) window.alert("Empate!")
+        if (vitoria()) if (rod % 2 == 0) fim("x") else fim("o")
+        else if(tabuleiroCheio()) window.alert("Empate!")
+    }
 
 }
 
